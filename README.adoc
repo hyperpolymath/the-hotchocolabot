@@ -1,6 +1,6 @@
-# HotChocolaBot
+= HotChocolaBot
 
-**An Educational Robotics Platform for Teaching Reverse Engineering and Systems Thinking**
+*An Educational Robotics Platform for Teaching Reverse Engineering and Systems Thinking*
 
 [![RSR Bronze](https://img.shields.io/badge/RSR-Bronze-cd7f32?style=flat-square)](RSR_COMPLIANCE.md)
 [![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue?style=flat-square)](LICENSE-MIT)
@@ -8,31 +8,31 @@
 
 Part of UAL Creative Communities' Postdisciplinary Mechatronics Group (MechCC)
 
-## Overview
+== Overview
 
 HotChocolaBot is an over-engineered hot chocolate dispenser designed to teach reverse engineering, systems thinking, and problem-solving skills through heutagogic (self-directed) learning. Students deconstruct and analyze the system to understand complex engineering principles in an engaging, hands-on environment.
 
-### Why Over-Engineered?
+=== Why Over-Engineered?
 
 The deliberate complexity serves pedagogical purposes:
-- **Layered Learning**: Multiple levels of abstraction (hardware, firmware, safety systems)
-- **Real-World Complexity**: Mirrors professional engineering projects
-- **Discovery-Based**: Students uncover design decisions through investigation
-- **Safety-First**: Demonstrates formal verification and CNO (Certified Null Operations) principles
+- *Layered Learning*: Multiple levels of abstraction (hardware, firmware, safety systems)
+- *Real-World Complexity*: Mirrors professional engineering projects
+- *Discovery-Based*: Students uncover design decisions through investigation
+- *Safety-First*: Demonstrates formal verification and CNO (Certified Null Operations) principles
 
-## Features
+== Features
 
-- **Rust-Based Control System**: Memory-safe, formally verifiable control logic
-- **Hardware Abstraction Layer**: Trait-based design enables testing without physical hardware
-- **Safety Monitoring**: State machine-based safety system with emergency stop
-- **Educational Mode**: Configurable delays and system introspection for learning
-- **Three-Ingredient System**: Cocoa, milk, and sugar with programmable recipes
-- **Mock Hardware**: Full simulation for development without Raspberry Pi
-- **RSR Compliant**: Bronze level (Rhodium Standard Repository), targeting Silver ([details](RSR_COMPLIANCE.md))
+- *Rust-Based Control System*: Memory-safe, formally verifiable control logic
+- *Hardware Abstraction Layer*: Trait-based design enables testing without physical hardware
+- *Safety Monitoring*: State machine-based safety system with emergency stop
+- *Educational Mode*: Configurable delays and system introspection for learning
+- *Three-Ingredient System*: Cocoa, milk, and sugar with programmable recipes
+- *Mock Hardware*: Full simulation for development without Raspberry Pi
+- *RSR Compliant*: Bronze level (Rhodium Standard Repository), targeting Silver ([details](RSR_COMPLIANCE.md))
 
-## Hardware Requirements
+== Hardware Requirements
 
-### Minimum Setup
+=== Minimum Setup
 
 - Raspberry Pi 4 (2GB+ RAM recommended)
 - 3× Peristaltic pumps (12V DC)
@@ -44,9 +44,9 @@ The deliberate complexity serves pedagogical purposes:
 - 12V power supply (2A+)
 - Wiring, breadboard, connectors
 
-**Estimated Cost**: £500-750 (See `hardware/bom/parts_list.md` for detailed BOM)
+*Estimated Cost*: £500-750 (See `hardware/bom/parts_list.md` for detailed BOM)
 
-### GPIO Pin Assignments (BCM Numbering)
+=== GPIO Pin Assignments (BCM Numbering)
 
 | Component | Default Pin |
 |-----------|-------------|
@@ -58,61 +58,61 @@ The deliberate complexity serves pedagogical purposes:
 | Temperature Sensor | I2C (0x48) |
 | LCD Display | I2C (0x27) |
 
-## Software Setup
+== Software Setup
 
-### Prerequisites
+=== Prerequisites
 
 - Rust 1.70+ (`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`)
 - Git
 
-### Installation
+=== Installation
 
 ```bash
-# Clone repository
+= Clone repository
 git clone https://github.com/Hyperpolymath/the-hotchocolabot.git
 cd the-hotchocolabot
 
-# Copy configuration template
+= Copy configuration template
 cp config.toml.example config.toml
 
-# Edit configuration for your hardware
+= Edit configuration for your hardware
 nano config.toml
 
-# Build (development mode with mock hardware)
+= Build (development mode with mock hardware)
 cargo build
 
-# Build for Raspberry Pi (cross-compile or on-device)
+= Build for Raspberry Pi (cross-compile or on-device)
 cargo build --release
 
-# Run tests
+= Run tests
 cargo test
 
-# Run with mock hardware (for development)
+= Run with mock hardware (for development)
 cargo run
 
-# Run on Raspberry Pi
+= Run on Raspberry Pi
 sudo cargo run --release
 ```
 
-### Cross-Compilation for Raspberry Pi
+=== Cross-Compilation for Raspberry Pi
 
 ```bash
-# Install cross-compilation toolchain
+= Install cross-compilation toolchain
 rustup target add armv7-unknown-linux-gnueabihf
 
-# Install cross-compilation dependencies
+= Install cross-compilation dependencies
 cargo install cross
 
-# Build for Raspberry Pi
+= Build for Raspberry Pi
 cross build --target armv7-unknown-linux-gnueabihf --release
 
-# Copy to Raspberry Pi
+= Copy to Raspberry Pi
 scp target/armv7-unknown-linux-gnueabihf/release/hotchocolabot pi@raspberrypi.local:~/
 ```
 
-## Architecture
+== Architecture
 
-### System Components
+=== System Components
 
 ```
 ┌─────────────────────────────────────────┐
@@ -138,7 +138,7 @@ scp target/armv7-unknown-linux-gnueabihf/release/hotchocolabot pi@raspberrypi.lo
                     └───────────────┘
 ```
 
-### Code Organization
+=== Code Organization
 
 ```
 the-hotchocolabot/
@@ -168,19 +168,19 @@ the-hotchocolabot/
     └── competition/         # Competition materials
 ```
 
-## Educational Use
+== Educational Use
 
-### Workshop Format
+=== Workshop Format
 
 HotChocolaBot is designed for 2-3 hour workshops with students aged 12-18:
 
-1. **Introduction** (30 min): Present the "mystery box" - what does it do?
-2. **Exploration** (45 min): Students observe, hypothesize, diagram
-3. **Deconstruction** (45 min): Guided hardware/software investigation
-4. **Reconstruction** (30 min): Students propose improvements
-5. **Reflection** (15 min): Systems thinking discussion
+1. *Introduction* (30 min): Present the "mystery box" - what does it do?
+2. *Exploration* (45 min): Students observe, hypothesize, diagram
+3. *Deconstruction* (45 min): Guided hardware/software investigation
+4. *Reconstruction* (30 min): Students propose improvements
+5. *Reflection* (15 min): Systems thinking discussion
 
-### Learning Outcomes
+=== Learning Outcomes
 
 - Reverse engineering methodology
 - Systems thinking and component interaction
@@ -189,7 +189,7 @@ HotChocolaBot is designed for 2-3 hour workshops with students aged 12-18:
 - Hardware-software integration
 - Professional engineering practices
 
-### Customization
+=== Customization
 
 Edit `config.toml` to enable educational features:
 
@@ -201,17 +201,17 @@ enable_teaching_failures = true # Intentional failures for learning
 observation_delay_ms = 1000     # Slow down for observation
 ```
 
-## Safety
+== Safety
 
-### Built-In Safety Features
+=== Built-In Safety Features
 
-- **Temperature Monitoring**: Continuous temperature validation
-- **Pump Runtime Limits**: Maximum runtime prevents overflow
-- **Emergency Stop**: Hardware button for immediate shutdown
-- **State Machine Verification**: Formal state transitions
-- **CNO Principles**: Certified Null Operations for safety-critical code
+- *Temperature Monitoring*: Continuous temperature validation
+- *Pump Runtime Limits*: Maximum runtime prevents overflow
+- *Emergency Stop*: Hardware button for immediate shutdown
+- *State Machine Verification*: Formal state transitions
+- *CNO Principles*: Certified Null Operations for safety-critical code
 
-### Safety Configuration
+=== Safety Configuration
 
 ```toml
 [safety]
@@ -222,42 +222,42 @@ operation_timeout = 120     # Seconds
 emergency_stop_enabled = true
 ```
 
-### Important Safety Notes
+=== Important Safety Notes
 
-⚠️ **Never operate unattended**
-⚠️ **Ensure emergency stop is accessible**
-⚠️ **Regularly inspect pumps and connections**
-⚠️ **Use food-safe tubing for ingredients**
-⚠️ **Supervise students during operation**
+⚠️ *Never operate unattended*
+⚠️ *Ensure emergency stop is accessible*
+⚠️ *Regularly inspect pumps and connections*
+⚠️ *Use food-safe tubing for ingredients*
+⚠️ *Supervise students during operation*
 
-## Research Connections
+== Research Connections
 
 HotChocolaBot demonstrates concepts from ongoing research:
 
-- **Phase-Separated Approach**: Oblíbený's methodology for systems design
-- **CNO (Certified Null Operations)**: Safety verification principles
-- **UPM (Universal Project Manager)**: Case study for project management theory
-- **Formal Verification**: State machine approach bridges theory to practice
+- *Phase-Separated Approach*: Oblíbený's methodology for systems design
+- *CNO (Certified Null Operations)*: Safety verification principles
+- *UPM (Universal Project Manager)*: Case study for project management theory
+- *Formal Verification*: State machine approach bridges theory to practice
 
-## Competition Submission
+== Competition Submission
 
-### Target: Robotics for Good Youth Challenge 2025-2026
+=== Target: Robotics for Good Youth Challenge 2025-2026
 
-- **Deadline**: April 1, 2026
-- **Theme**: Food security (adapted to educational food systems)
-- **Requirements**:
+- *Deadline*: April 1, 2026
+- *Theme*: Food security (adapted to educational food systems)
+- *Requirements*:
   - Working prototype ✓
   - Video demonstration
   - Workshop delivery (3+ sessions, 15+ students)
   - Impact metrics and assessment data
   - Open-source repository ✓
 
-### Alternative Competitions
+=== Alternative Competitions
 
 - FIRST Tech Challenge Educational Outreach Award
 - ECER (Academic paper on educational methodology)
 
-## Development Status
+== Development Status
 
 - [x] Repository structure
 - [x] Rust control system scaffolding
@@ -270,45 +270,45 @@ HotChocolaBot demonstrates concepts from ongoing research:
 - [ ] Impact assessment collection
 - [ ] Competition submission
 
-## Contributing
+== Contributing
 
 See `CONTRIBUTING.md` for development guidelines.
 
-### Quick Start for Developers
+=== Quick Start for Developers
 
 ```bash
-# Run tests
+= Run tests
 cargo test
 
-# Run with logging
+= Run with logging
 RUST_LOG=debug cargo run
 
-# Format code
+= Format code
 cargo fmt
 
-# Lint
+= Lint
 cargo clippy
 
-# Benchmark
+= Benchmark
 cargo bench
 ```
 
-## License
+== License
 
 Dual-licensed under MIT OR Apache-2.0. See `LICENSE-MIT` and `LICENSE-APACHE` for details.
 
-## Acknowledgments
+== Acknowledgments
 
 - UAL Creative Communities - MechCC
 - Robotics for Good Youth Challenge (ITU/FAO)
 - Rust Embedded Working Group
 - Open-source hardware community
 
-## Contact
+== Contact
 
 - Repository: https://github.com/Hyperpolymath/the-hotchocolabot
 - Issues: https://github.com/Hyperpolymath/the-hotchocolabot/issues
 
 ---
 
-**Built with ❤️ for education and open-source learning**
+*Built with ❤️ for education and open-source learning*
