@@ -55,5 +55,5 @@ opt-level = 1       # Some optimization for embedded testing
 name = "hotchocolabot"
 path = "src/main.rs"
 
-[workspace]
-members = ["crates/*"]
+# [workspace]
+# members = ["crates/*"]  # Uncomment when subcrates are added
